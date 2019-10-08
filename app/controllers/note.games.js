@@ -1,61 +1,71 @@
 //const Note = require('../models/note.model.js');
 const Game = require('../models/note.game.js');
 
-// Create and Save a new Note
-exports.creatNewGame = function (data) {
-  console.log("Create a new game : ", data);
-  var newGame = new Game();
-  newGame.setName(data.name);
+// Create and Save a new Game
+function createNewGame (data) {
+  //console.log("Create a new game : ", data);
+  var newGame = new Game(data.name);
   games.push(newGame);
 
-
-  // Validate request
-      /*if(!req.body.name) {
-          return res.status(400).send({
-              message: "Note content can not be empty"
-          });
-      }
-
-
-      var newGame = new Game(req.body.name);
-      games.push(newGame);
-      console.log(games);
-
-      res.send(games);
-      */
-
-      // Save Note in the database
-    /*note.save()
-      .then(data => {
-          res.send(data);
-      }).catch(err => {
-          res.status(500).send({
-              message: err.message || "Some error occurred while creating the Note."
-          });
-      });
-      */
-
 };
+exports.createNewGame = createNewGame;
 
 
-// Retrieve and return all notes from the database.
-exports.findAll = function () {
-  console.log("find all");
+// Find all games
+function findAll() {
+  ////console.log("find all");
   return games;
-  //res.send(games);
 };
+exports.findAll = findAll;
+
+
+function getGame(data){
+  for(game of games) {
+    //console.log("find games", game);
+    if(game.id == data.gameId){
+      //console.log("yes found", gameId);
+      return game;
+    }
+  }
+  // error
+  throw new Error('Game isnt found');
+}
+exports.getGame = getGame;
+
+
+// set Place
+function setPlaceId(data) {
+  var game = getGame(data);
+  game.setPlaceId(data.placeId);
+};
+exports.setPlaceId = setPlaceId;
+
+// get
+function getPlaceId(data) {
+  var game = getGame(data);
+  return game.getPlaceId();
+};
+exports.getPlaceId = getPlaceId;
+
+function getPlaceName(data) {
+  var game = getGame(data);
+  return game.getPlaceName();
+};
+exports.getPlaceName = getPlaceName;
+
+function getAllPlace() {
+  return require("../models/note.maps.json");
+};
+exports.getAllPlace = getAllPlace;
+
 
 exports.getLocation = function (data) {
-  console.log("Get gamelocation",data);
-  // find
-
-  console.log("id", data.gameId);
 
   try {
     var game = findGame(data.gameId);
     return game.getLocation();
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     return {'error': err.message};
   }
 
@@ -64,28 +74,27 @@ exports.getLocation = function (data) {
 };
 
 exports.getLocationName = function (data) {
-  console.log("Get location name",data);
+  //console.log("Get location name",data);
   // find
 
-  console.log("id", data.gameId);
+  //console.log("id", data.gameId);
 
   try {
     var game = findGame(data.gameId);
     return game.getLocationName();
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     return {'error': err.message};
   }
-
 
   //res.send(games);
 };
 
 exports.setLocation = function (data) {
-  console.log("Set gamelocation",data);
+  //console.log("Set gamelocation",data);
   // find
 
-  console.log("id", data.gameId);
+  //console.log("id", data.gameId);
   var game = findGame(data.gameId);
   game.setLocation(data.locationId);
 
@@ -93,7 +102,7 @@ exports.setLocation = function (data) {
 };
 
 exports.getAllLocation = function () {
-  console.log("Get all location");
+  //console.log("Get all location");
   // find
 
   return require("../models/note.maps.json");
@@ -103,18 +112,7 @@ exports.getAllLocation = function () {
 
 
 
-function findGame(gameId){
-  for(game of games) {
-    console.log("find games", game);
-    if(game.id == gameId){
-      console.log("yes found", gameId);
-      return game;
-    }
-  }
-  // error
-  throw new Error('Game isnt found');
-}
-exports.findGame = findGame
+
 
 /*
 // Find a single note with a noteId

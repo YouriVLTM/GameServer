@@ -1,21 +1,22 @@
 module.exports = class User {
   constructor(name){
     const numberShot = 3;
-    this.name = name;
+    this.setName(name);
     this._shot = numberShot;
+    this.location = null
 
   }
   getName(){
-    return this._location;
+    return this.name;
   }
-  setName(location) {
-    this._location = location;
+  setName(name) {
+    this.name = name;
   }
   getLocation(){
-    return this._location;
+    return this.location;
   }
   setLocation(location) {
-    this._location = location;
+    this.location = location;
   }
   lowerShot(){
     this.shot -= 1;

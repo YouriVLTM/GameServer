@@ -19,11 +19,13 @@ module.exports = (app,io) => {
 
        });
 
-         //Games
-        socket.on( 'games.creatNewGame', function( data ) {
+        /********/
+        /*Games**/
+        /********/
+        socket.on( 'games.createNewGame', function( data ) {
       		console.log( 'Message received ', data );
           try {
-            gamess.creatNewGame(data);
+            gamess.createNewGame(data);
           } catch (e) {
             socket.emit('games.error', { data: e.message });
           }
@@ -32,53 +34,146 @@ module.exports = (app,io) => {
 
         socket.on( 'games.findAll', function( data ) {
          console.log( 'Message received ', data );
-         receive = gamess.findAll();
-         socket.emit('games.findAll', { data: receive });
+         try {
+           receive = gamess.findAll();
+           socket.emit('games.findAll', { data: receive });
+         } catch (e) {
+           socket.emit('games.error', { data: e.message });
+         }
        });
 
-       // Getter and setters
-
-       socket.on( 'games.setName', function( data ) {
+       socket.on( 'games.getGame', function( data ) {
         console.log( 'Message received ', data );
-        receive = game.setName(data);
-        socket.emit('games.findAll', { data: receive });
+        try {
+          receive = gamess.getGame(data);
+          socket.emit('games.getGame', { data: receive });
+        } catch (e) {
+          socket.emit('games.error', { data: e.message });
+        }
+      });
+
+
+      socket.on( 'games.setPlaceId', function( data ) {
+        console.log( 'Message received ', data );
+        try {
+          gamess.setPlaceId(data);
+        } catch (e) {
+          socket.emit('games.error', { data: e.message });
+        }
 
       });
 
-       socket.on( 'games.getLocation', function( data ) {
+      socket.on( 'games.getPlaceId', function( data ) {
         console.log( 'Message received ', data );
-        receive = gamess.getLocation(data);
-        console.log(receive);
-        socket.emit('games.getLocation', { data: receive });
+        try {
+          receive = gamess.getPlaceId(data);
+          socket.emit('games.getPlaceId', { data: receive });
+        } catch (e) {
+          socket.emit('games.error', { data: e.message });
+        }
+
+      });
+
+      socket.on( 'games.getPlaceName', function( data ) {
+        console.log( 'Message received ', data );
+        try {
+          receive = gamess.getPlaceName(data);
+          socket.emit('games.getPlaceName', { data: receive });
+        } catch (e) {
+          socket.emit('games.error', { data: e.message });
+        }
+
+      });
+
+      socket.on( 'games.getAllPlace', function( data ) {
+      console.log( 'Message received ' );
+      try {
+        receive = gamess.getAllPlace();
+        socket.emit('games.getAllPlace', { data: receive });
+      } catch (e) {
+        socket.emit('games.error', { data: e.message });
+      }
+
+      });
+
+
+
+/*
+      socket.on( 'games.getLocation', function( data ) {
+       console.log( 'Message received ', data );
+       receive = gamess.getLocation(data);
+       console.log(receive);
+       socket.emit('games.getLocation', { data: receive });
       });
 
       socket.on( 'games.getLocationName', function( data ) {
-       console.log( 'Message received ', data );
-       receive = gamess.getLocationName(data);
-       console.log(receive);
-       socket.emit('games.getLocationName', { data: receive });
-     });
+      console.log( 'Message received ', data );
+      receive = gamess.getLocationName(data);
+      console.log(receive);
+      socket.emit('games.getLocationName', { data: receive });
+      });
 
-      socket.on( 'games.setLocation', function( data ) {
-       console.log( 'Message received ', data );
-       gamess.setLocation(data);
-     });
 
-     socket.on( 'games.getAllLocation', function( data ) {
+
+      socket.on( 'games.getAllLocation', function( data ) {
       console.log( 'Message received ' );
       //gamess.setLocation(data);
       receive = gamess.getAllLocation();
       socket.emit('games.getAllLocation', { data: receive });
+      });
+
+
+      socket.on( 'games.startGame', function( data ) {
+      console.log( 'Message received ', data );
+      receive = gamess.findGame(data.gameId);
+      receive.setActive(true);
+      socket.emit('games.startGame', { data: receive });
+
+      });
+
+      */
+
+
+
+
+      /********/
+      /*Game**/
+      /********/
+
+       socket.on( 'game.setName', function( data ) {
+        console.log( 'Message received ', data );
+        try {
+          game.setName(data);
+          //socket.emit('game.setName', { data: receive });
+        } catch (e) {
+          socket.emit('games.error', { data: e.message });
+        }
+      });
+
+      socket.on( 'game.createNewAgent', function( data ) {
+       console.log( 'Message received ', data );
+       try {
+         game.createNewAgent(data);
+         //socket.emit('game.createNewAgent', { data: receive });
+       } catch (e) {
+         socket.emit('games.error', { data: e.message });
+       }
+     });
+
+     socket.on( 'game.createNewPrisoner', function( data ) {
+      console.log( 'Message received ', data );
+      try {
+        game.createNewPrisoner(data);
+        //socket.emit('game.createNewAgent', { data: receive });
+      } catch (e) {
+        socket.emit('games.error', { data: e.message });
+      }
     });
 
 
-    socket.on( 'games.startGame', function( data ) {
-     console.log( 'Message received ', data );
-     receive = gamess.findGame(data.gameId);
-     receive.setActive(true);
-     socket.emit('games.startGame', { data: receive });
 
-   });
+
+
 
 
 

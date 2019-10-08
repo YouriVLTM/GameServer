@@ -1,13 +1,12 @@
 
 module.exports = class Game {
-  constructor(){
+  constructor(name){
     this.id = uuid.v1();
-    this.name = null;
+    this.setName(name);
     this.users = new Array();
     this.placeId = null;
     this.placeName = null;
     this.active = false;
-
   }
 
   getId(){
@@ -17,22 +16,25 @@ module.exports = class Game {
   getName(name){
     return this.name;
   }
+
   setName(name){
-    if(isValidName(name)){
+    console.log("set name");
+    if(this.isValidName(name)){
         this.name = name;
     }else{
       throw new Error('The name is Invallid');
     }
-
-
   }
 
   isValidName(name){
+    console.log("Is valid name");
     if(name !=''){
       return true;
     }
     return false;
   }
+
+
 
   getUsers(){
     return this.users;
@@ -56,8 +58,11 @@ module.exports = class Game {
     return this.placeId;
   }
   setPlaceId(placeId){
-    this.placeId = placeId;
     let _mapsjson = getMapsJsonFile();
+    if(placeId < 0 || placeId > _mapsjson.length){
+      throw new Error("Place Id is invalid");
+    }
+    this.placeId = placeId;
     this.placeName = _mapsjson[this.placeId].name;
   }
 
