@@ -1,0 +1,8 @@
+/node_modules
+/socket.io
+/cert.pem
+/certcop.pem
+/key.pem
+/keycop.pem
+/package-lock.json
+

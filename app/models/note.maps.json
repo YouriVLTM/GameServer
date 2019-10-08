@@ -1,0 +1,27 @@
+[
+  {
+    "id":0,
+    "name": "Meerhout",
+    "url": "app/data/meerhout.json"
+  },
+  {
+    "id":1,
+    "name": "Geel",
+    "url": "app/data/geel.json"
+  },
+  {
+    "id":2,
+    "name": "Turnhoud",
+    "url": "app/data/geel.json"
+  },
+  {
+    "id":3,
+    "name": "Lier",
+    "url": "app/data/geel.json"
+  },
+  {
+    "id":4,
+    "name": "Kasterlee",
+    "url": "app/data/geel.json"
+  }
+]
