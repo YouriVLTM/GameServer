@@ -32,11 +32,11 @@ module.exports = (app,io) => {
 
       	});
 
-        socket.on( 'games.findAll', function( data ) {
+        socket.on( 'games.getAll', function( data ) {
          console.log( 'Message received ', data );
          try {
-           receive = gamess.findAll();
-           socket.emit('games.findAll', { data: receive });
+           receive = gamess.getAll();
+           socket.emit('games.getAll', { data: receive });
          } catch (e) {
            socket.emit('games.error', { data: e.message });
          }
@@ -142,7 +142,7 @@ module.exports = (app,io) => {
 
        socket.on( 'game.setName', function( data ) {
         console.log( 'Message received ', data );
-        try {
+        try {          
           game.setName(data);
           //socket.emit('game.setName', { data: receive });
         } catch (e) {

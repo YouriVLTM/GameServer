@@ -27,7 +27,6 @@ module.exports = class Game {
   }
 
   isValidName(name){
-    console.log("Is valid name");
     if(name !=''){
       return true;
     }
@@ -58,7 +57,7 @@ module.exports = class Game {
     return this.placeId;
   }
   setPlaceId(placeId){
-    let _mapsjson = getMapsJsonFile();
+    let _mapsjson = this.getMapsJsonFile();
     if(placeId < 0 || placeId > _mapsjson.length){
       throw new Error("Place Id is invalid");
     }

@@ -12,18 +12,18 @@ exports.createNewGame = createNewGame;
 
 
 // Find all games
-function findAll() {
-  ////console.log("find all");
+function getAll() {
   return games;
 };
-exports.findAll = findAll;
+exports.getAll = getAll;
 
 
 function getGame(data){
+  console.log("yes found", data);
+
   for(game of games) {
-    //console.log("find games", game);
     if(game.id == data.gameId){
-      //console.log("yes found", gameId);
+      console.log("yes found", data.gameId);
       return game;
     }
   }
