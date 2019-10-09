@@ -25,8 +25,12 @@ module.exports = class Location {
     return this.longitude;
   }
 
-  getLocaction(){
-    return {latitude: getLatitude(), longitude: getLongitude() };
+  setLocation(location){
+    this.latlng = location;
+  }
+
+  getLocation(){
+    return this.latlng;
   }
 
 }

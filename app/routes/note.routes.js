@@ -2,7 +2,7 @@ module.exports = (app,io) => {
     const gamess = require('../controllers/note.games.js');
     const game = require('../controllers/note.game.js');
     const maps = require('../controllers/note.maps.js');
-
+    const users = require('../controllers/note.users.js');
 
     // Create a new Note
   /*  app.post('/games', games.create);
@@ -174,7 +174,9 @@ module.exports = (app,io) => {
    });
 
 
-   //Maps
+   /********/
+   /*Maps**/
+   /********/
    socket.on( 'maps.getMaps', function( data ) {
     console.log( 'Message received ', data );
     try {
@@ -185,6 +187,19 @@ module.exports = (app,io) => {
     }
   });
 
+
+
+  /********/
+  /*Users**/
+  /********/
+  socket.on( 'user.setLocation', function( data ) {
+   console.log( 'Message received ', data );
+   try {
+     users.setLocation(data);
+   } catch (e) {
+     socket.emit('user.error', { data: e.message });
+   }
+  });
 
 
 
