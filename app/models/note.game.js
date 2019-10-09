@@ -7,6 +7,7 @@ module.exports = class Game {
     this.placeId = null;
     this.placeName = null;
     this.active = false;
+    this.attribute=null;
   }
 
   getId(){
@@ -53,6 +54,37 @@ module.exports = class Game {
     getUser(userId).pop();
   }
 
+  getCountUsers(){
+    return this.getUsers().length;
+  }
+  getCountAgent(){
+    return this.getAllAgent().length;
+  }
+
+  getAllAgent(){
+    var users = new Array();
+    this.users.forEach(function(user){
+      if(user._function == "Agent"){
+        users.push(user);
+      }
+    });
+    return users;
+  }
+
+  getCountPrisoner(){
+    return this.getAllPrisoner().length;
+  }
+
+  getAllPrisoner(){
+    var users = new Array();
+    this.users.forEach(function(user){
+      if(user._function == "Prisoner"){
+        users.push(user);
+      }
+    });
+    return users;
+  }
+
   getPlaceId(){
     return this.placeId;
   }
@@ -63,6 +95,10 @@ module.exports = class Game {
     }
     this.placeId = placeId;
     this.placeName = _mapsjson[this.placeId].name;
+
+    // include json file
+    this.attribute = this.getAttribute(this.placeId);
+    //console.log(this.getAttribute(this.placeId));
   }
 
   getPlaceName(){
@@ -75,9 +111,35 @@ module.exports = class Game {
   setActive(boolean){
     this.active = boolean;
   }
+  getattribute(){
+    return this.attribute;
+  }
+
+
+
+  getAttribute(placeId){
+    return require(this.getMapsJsonFile()[placeId].url);
+  }
 
   getMapsJsonFile(){
     return require('./note.maps.json');
+  }
+
+  goToMaps(){
+    if(this.getCountUsers() == 0){
+      throw new Error('User is zero');
+      console.log("GOTOMAPS ERROR");
+    }
+    if(this.getPlaceId() == null){
+      throw new Error('Place is invalid');
+      console.log("GOTOMAPS ERROR");
+    }
+    if(!this.isValidName()){
+      throw new Error('Name is invalid');
+      console.log("GOTOMAPS ERROR");
+    }
+    return true;
+    console.log("GOTOMAPS OOK");
   }
 
 

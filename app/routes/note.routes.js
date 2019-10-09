@@ -1,6 +1,7 @@
 module.exports = (app,io) => {
     const gamess = require('../controllers/note.games.js');
     const game = require('../controllers/note.game.js');
+    const maps = require('../controllers/note.maps.js');
 
 
     // Create a new Note
@@ -21,7 +22,7 @@ module.exports = (app,io) => {
 
         /********/
         /*Games**/
-        /********/
+        /******/
         socket.on( 'games.createNewGame', function( data ) {
       		console.log( 'Message received ', data );
           try {
@@ -96,59 +97,51 @@ module.exports = (app,io) => {
 
       });
 
-
-
-/*
-      socket.on( 'games.getLocation', function( data ) {
-       console.log( 'Message received ', data );
-       receive = gamess.getLocation(data);
-       console.log(receive);
-       socket.emit('games.getLocation', { data: receive });
-      });
-
-      socket.on( 'games.getLocationName', function( data ) {
-      console.log( 'Message received ', data );
-      receive = gamess.getLocationName(data);
-      console.log(receive);
-      socket.emit('games.getLocationName', { data: receive });
-      });
-
-
-
-      socket.on( 'games.getAllLocation', function( data ) {
-      console.log( 'Message received ' );
-      //gamess.setLocation(data);
-      receive = gamess.getAllLocation();
-      socket.emit('games.getAllLocation', { data: receive });
-      });
-
-
-      socket.on( 'games.startGame', function( data ) {
-      console.log( 'Message received ', data );
-      receive = gamess.findGame(data.gameId);
-      receive.setActive(true);
-      socket.emit('games.startGame', { data: receive });
-
-      });
-
-      */
-
-
-
-
       /********/
       /*Game**/
       /********/
 
        socket.on( 'game.setName', function( data ) {
         console.log( 'Message received ', data );
-        try {          
+        try {
           game.setName(data);
           //socket.emit('game.setName', { data: receive });
         } catch (e) {
           socket.emit('games.error', { data: e.message });
         }
       });
+
+      socket.on( 'game.getCountAgent', function( data ) {
+       console.log( 'Message received ', data );
+       try {
+         receive = game.getCountAgent(data);
+         socket.emit('game.getCountAgent', { data: receive });
+       } catch (e) {
+         socket.emit('games.error', { data: e.message });
+       }
+     });
+
+     socket.on( 'game.getCountPrisoner', function( data ) {
+      console.log( 'Message received ', data );
+      try {
+        receive = game.getCountPrisoner(data);
+        socket.emit('game.getCountPrisoner', { data: receive });
+      } catch (e) {
+        socket.emit('games.error', { data: e.message });
+      }
+    });
+
+
+    socket.on( 'game.createNewUser', function( data ) {
+     console.log( 'Message received ', data );
+     try {
+       receive = game.createNewUser(data);
+       socket.emit('game.getUser', { data: receive });
+     } catch (e) {
+       socket.emit('games.error', { data: e.message });
+     }
+    });
+
 
       socket.on( 'game.createNewAgent', function( data ) {
        console.log( 'Message received ', data );
@@ -169,6 +162,28 @@ module.exports = (app,io) => {
         socket.emit('games.error', { data: e.message });
       }
     });
+
+    socket.on( 'game.goToMaps', function( data ) {
+     console.log( 'Message received ', data );
+     try {
+       receive = game.goToMaps(data);
+       socket.emit('game.goToMaps', { data: receive });
+     } catch (e) {
+       socket.emit('games.error', { data: e.message });
+     }
+   });
+
+
+   //Maps
+   socket.on( 'maps.getMaps', function( data ) {
+    console.log( 'Message received ', data );
+    try {
+      receive = maps.getMaps(data);
+      socket.emit('maps.getMaps', { data: receive });
+    } catch (e) {
+      socket.emit('maps.error', { data: e.message });
+    }
+  });
 
 
 

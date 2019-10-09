@@ -2,7 +2,7 @@
   {
     "id":0,
     "name": "Meerhout",
-    "url": "app/data/meerhout.json"
+    "url": "../data/meerhout.json"
   },
   {
     "id":1,

@@ -6,6 +6,8 @@ global.uuid = require('uuid');
 // create express app
 const app = express();
 const https = require('https');
+//const httpapp = express();
+//const http = require('http');
 const fs = require('fs');
 
 
@@ -16,7 +18,9 @@ var server = https.createServer({
     passphrase: 'Vriend28'
 }, app)
 
+//var httpserver = http.createServer(httpapp);
 var io = require('socket.io').listen(server);
+//var io = require('socket.io').listen(httpserver);
 
 /*
 console.log("connection");
@@ -54,6 +58,15 @@ app.use(function(req, res, next) {
        next();
    });
 
+/*
+  httpapp.get('/', (req, res) => {
+    res.json({"message": "Welwxome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+  });
+  path = require('path');
+  httpapp.get('/socket.io/socket.io.js', (req, res) => {
+    res.sendFile(path.join(__dirname +'/socket.io/socket.io.js'));
+  });
+*/
 // define a simple route
 app.get('/', (req, res) => {
   res.json({"message": "Welwxome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
@@ -76,10 +89,31 @@ global.games = new Array();
 
 //test spel
 const Game = require('./app/models/note.game.js');
+const Location = require('./app/models/note.location.js');
+const Agent = require('./app/models/note.agent.js');
+const Prisoner = require('./app/models/note.prisoner.js');
+
+
 var newGame = new Game("spel1");
+var location = new Location(1,3);
+var agent = new Agent("youri");
+agent.setLocation(location);
+newGame.addUser(agent);
+
+var prison = new Prisoner("LOL");
+agent.setLocation(location);
+newGame.addUser(prison);
+
+var agent2 = new Agent("THe BEST");
+agent.setLocation(location);
+newGame.addUser(agent2);
+
 games.push(newGame);
+// add Users
+
 var newGame = new Game("spel2");
 games.push(newGame);
 console.log(games);
 
+//httpserver.listen(8080);
 server.listen(3000);

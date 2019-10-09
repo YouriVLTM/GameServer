@@ -1,11 +1,20 @@
 module.exports = class User {
   constructor(name){
+    this.id = uuid.v1();
+    this.setName(name);    
     const numberShot = 3;
-    this.setName(name);
     this._shot = numberShot;
-    this.location = null
+    this.location = null;
+
+
+
 
   }
+
+  getId(){
+    return this.id;
+  }
+
   getName(){
     return this.name;
   }
