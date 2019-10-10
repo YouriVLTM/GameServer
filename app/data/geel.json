@@ -1,0 +1,35 @@
+
+[
+  {
+    "id":0,
+    "position": {"lat": 51.147316, "lng": 5.002830},
+    "title": "Ardis G Egan Intermediate School",
+    "icon":{
+      "url":"img/polictieicon.png"
+    }
+  },
+  {
+    "id":1,
+    "position": {"lat": 51.148167, "lng": 5.005472},
+    "title": "Portola School",
+    "icon":{
+      "url":"img/polictieicon.png"
+    }
+  },
+  {
+    "id":2,
+    "position": {"lat": 51.148674, "lng": 4.998877},
+    "title": "Isaac Newton Graham Middle School",
+    "icon":{
+      "url":"img/cut.png"
+    }
+  },
+  {
+    "id":3,
+    "position": {"lat": 51.150949, "lng": 5.003769},
+    "title": "Isaac Newton Graham Middle School",
+    "icon":{
+      "url":"img/cut.png"
+    }
+  }
+]
