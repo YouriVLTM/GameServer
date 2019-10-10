@@ -7,7 +7,7 @@
   {
     "id":1,
     "name": "Geel",
-    "url": "app/data/geel.json"
+    "url": "../data/geel.json"
   },
   {
     "id":2,
