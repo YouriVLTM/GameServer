@@ -97,7 +97,7 @@ const Prisoner = require('./app/models/note.prisoner.js');
 var newGame = new Game("spel1");
 var location = new Location(1,3);
 var agent = new Agent("youri");
-agent.setLocation(location);
+/*agent.setLocation(location);
 newGame.addUser(agent);
 
 var prison = new Prisoner("LOL");
@@ -107,12 +107,10 @@ newGame.addUser(prison);
 var agent2 = new Agent("THe BEST");
 agent.setLocation(location);
 newGame.addUser(agent2);
-
+*/
 games.push(newGame);
 // add Users
 
-var newGame = new Game("spel2");
-games.push(newGame);
 console.log(games);
 
 //httpserver.listen(8080);

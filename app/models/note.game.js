@@ -19,7 +19,6 @@ module.exports = class Game {
   }
 
   setName(name){
-    console.log("set name");
     if(this.isValidName(name)){
         this.name = name;
     }else{
@@ -38,14 +37,6 @@ module.exports = class Game {
 
   getUsers(){
     return this.users;
-  }
-  getUser(id){
-    this.users.forEach(function(user){
-      if(user.id = id){
-        return user;
-      }
-    });
-    throw new Error('User not found');
   }
   addUser(newUser){
     this.users.push(newUser);
@@ -128,18 +119,14 @@ module.exports = class Game {
   goToMaps(){
     if(this.getCountUsers() == 0){
       throw new Error('User is zero');
-      console.log("GOTOMAPS ERROR");
     }
     if(this.getPlaceId() == null){
       throw new Error('Place is invalid');
-      console.log("GOTOMAPS ERROR");
     }
     if(!this.isValidName()){
       throw new Error('Name is invalid');
-      console.log("GOTOMAPS ERROR");
     }
     return true;
-    console.log("GOTOMAPS OOK");
   }
 
 

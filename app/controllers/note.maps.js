@@ -1,4 +1,5 @@
 const Gamess = require('./note.games.js');
+const Users = require('./note.users.js');
 
 // Create and Save a new name
 function getMaps(data) {

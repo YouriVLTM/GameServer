@@ -6,7 +6,6 @@ const Gamess = require('./note.games.js');
 
 // Create and Save a new name
 function setName(data) {
-  console.log("Set name",data);
 
   var game = Gamess.getGame(data);
   game.setName(data.name);
@@ -16,10 +15,8 @@ exports.setName = setName;
 
 
 function getCountAgent(data) {
-  console.log("Set count agent",data);
 
   var game = Gamess.getGame(data);
-  console.log("Get count agent");
   return game.getCountAgent();
 
 };
@@ -28,7 +25,6 @@ exports.getCountAgent = getCountAgent;
 
 
 function getCountPrisoner(data) {
-  console.log("Set count Prisoner",data);
   var game = Gamess.getGame(data);
   return game.getCountPrisoner();
 
@@ -36,7 +32,6 @@ function getCountPrisoner(data) {
 exports.getCountPrisoner = getCountPrisoner;
 
 function createNewAgent(data) {
-  console.log("New Agent",data);
 
   var game = Gamess.getGame(data);
   var newLocation = new Location();
@@ -50,7 +45,6 @@ function createNewAgent(data) {
 exports.createNewAgent = createNewAgent;
 
 function createNewPrisoner(data) {
-  console.log("New Prisoner",data);
 
   var game = Gamess.getGame(data);
   var newLocation = new Location();
@@ -64,7 +58,6 @@ function createNewPrisoner(data) {
 exports.createNewPrisoner = createNewPrisoner;
 
 function createNewUser(data) {
-  console.log("Creat new user",data);
   if(data.personalitie == "Agent"){
     return this.createNewAgent(data);
   }else if(data.personalitie == "Prisoner"){
@@ -77,10 +70,19 @@ function createNewUser(data) {
 exports.createNewUser = createNewUser;
 
 
+
 function goToMaps(data) {
-  console.log("Creat new user",data);
   var game = Gamess.getGame(data);
   return game.goToMaps();
 
 };
 exports.goToMaps = goToMaps;
+
+
+function getAllUserLocation(data) {
+  var game = Gamess.getGame(data);
+
+  return game.getUsers();
+
+};
+exports.getAllUserLocation = getAllUserLocation;

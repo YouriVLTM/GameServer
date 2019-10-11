@@ -19,11 +19,8 @@ exports.getAll = getAll;
 
 
 function getGame(data){
-  console.log("yes found", data);
-
   for(game of games) {
     if(game.id == data.gameId){
-      console.log("yes found", data.gameId);
       return game;
     }
   }

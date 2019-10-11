@@ -4,6 +4,7 @@ module.exports = class Prisoner extends User {
   constructor(name){
     super(name);
     this._function = "Prisoner";
+    this.icon = "prisoner.png"
   }
 
 

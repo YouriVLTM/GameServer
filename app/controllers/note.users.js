@@ -2,6 +2,7 @@ const Gamess = require('./note.games.js');
 
 
 function getUser(data){
+
   var game = Gamess.getGame(data);
   var users = game.users;
 
@@ -19,8 +20,6 @@ function setLocation(data) {
 var user = getUser(data);
 
 user.location.setLocation(data.latlng);
-
-
 
 };
 exports.setLocation = setLocation;
