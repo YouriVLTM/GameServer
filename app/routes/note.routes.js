@@ -252,6 +252,14 @@ module.exports = (app,io) => {
    }
   });
 
+  socket.on( 'user.hitShot', function( data ) {
+   try {
+     users.hitShot(data);
+   } catch (e) {
+     socket.emit('user.error', { data: e.message });
+   }
+  });
+
   socket.on( 'user.setLocation', function( data ) {
    try {
      users.setLocation(data);

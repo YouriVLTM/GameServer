@@ -45,6 +45,25 @@ Game.addMessage(data);
 };
 exports.addAttribute = addAttribute;
 
+function hitShot(data) {
+var user = getUser(data);
+
+if(user.getShot()> 0){
+
+  data.detectUsers.forEach(function(detectuser){
+    us = getUser({'gameId':data.gameId,'userId':detectuser.id});
+    console.log(us);
+    us.hitShot();
+  });
+
+}else{
+  throw new Error("Target view: Kogels op");
+}
+
+
+};
+exports.hitShot = hitShot;
+
 
 function loseShot(data) {
 var user = getUser(data);

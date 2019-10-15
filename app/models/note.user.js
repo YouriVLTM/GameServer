@@ -8,6 +8,7 @@ module.exports = class User {
     this.takedAttributes = new Array();
     this.cancele1tAttributes = new Array();
     this.getMessageBoolean = true;
+    this.death = false;
   }
 
   getId(){
@@ -39,7 +40,16 @@ module.exports = class User {
     this.cancele1tAttributes.push(parseInt(attributeId));
   }
 
+  getDeath(){
+    return this.death;
+  }
+  setDeath(death) {
+    this.death = death;
+  }
 
+getShot(){
+  return this.shot;
+}
   loseShot(){
     if(this.shot > 0){
       this.shot -= 1;
@@ -48,6 +58,11 @@ module.exports = class User {
     }
 
   }
+
+  hitShot(){
+    this.setDeath(true);
+  }
+
   reloadShot(){
     this.shot = numberShot;
   }
