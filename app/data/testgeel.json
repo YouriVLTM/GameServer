@@ -2,11 +2,10 @@
 [
   {
     "id":0,
-    "taked":false,
     "position": {"lat": 51.147316, "lng": 5.002830},
-    "title": "Ardis G Egan Intermediate School",
+    "title": "Een schaar",
     "icon":{
-      "url":"img/attribute/cut.png",
+      "url":"img/attribute/cut.svg",
       "size": {
             "width": 40,
             "height": 40
@@ -15,11 +14,10 @@
   },
   {
     "id":1,
-    "taked":false,
     "position": {"lat": 51.148167, "lng": 5.005472},
-    "title": "Portola School",
+    "title": "Een geweer",
     "icon":{
-      "url":"img/attribute/gun.png",
+      "url":"img/attribute/gun.svg",
       "size": {
             "width": 40,
             "height": 40
@@ -28,11 +26,10 @@
   },
   {
     "id":2,
-    "taked":false,
     "position": {"lat": 51.148674, "lng": 4.998877},
-    "title": "Isaac Newton Graham Middle School",
+    "title": "Een schaar",
     "icon":{
-      "url":"img/attribute/knife.png",
+      "url":"img/attribute/knife.svg",
       "size": {
             "width": 40,
             "height": 40
@@ -41,11 +38,10 @@
   },
   {
     "id":3,
-    "taked":false,
     "position": {"lat": 51.150949, "lng": 5.003769},
-    "title": "Isaac Newton Graham Middle School",
+    "title": "Een sdcard",
     "icon":{
-      "url":"img/attribute/sdcard.png",
+      "url":"img/attribute/sdcard.svg",
       "size": {
             "width": 40,
             "height": 40

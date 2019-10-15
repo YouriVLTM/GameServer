@@ -72,7 +72,7 @@ app.get('/', (req, res) => {
   res.json({"message": "Welwxome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
 });
 app.get('/games', (req, res) => {
-  res.json({"message": games});
+  res.json({"Games": games});
 });
 
 app.get('/socket.io.js', (req, res) => {
@@ -95,7 +95,7 @@ const Prisoner = require('./app/models/note.prisoner.js');
 
 
 var newGame = new Game("spel1");
-var location = new Location(1,3);
+var location = new Location();
 var agent = new Agent("youri");
 /*agent.setLocation(location);
 newGame.addUser(agent);
@@ -103,11 +103,11 @@ newGame.addUser(agent);
 var prison = new Prisoner("LOL");
 agent.setLocation(location);
 newGame.addUser(prison);
-
+*/
 var agent2 = new Agent("THe BEST");
 agent.setLocation(location);
-newGame.addUser(agent2);
-*/
+//newGame.addUser(agent2);
+
 games.push(newGame);
 // add Users
 

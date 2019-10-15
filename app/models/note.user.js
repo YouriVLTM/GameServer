@@ -3,12 +3,11 @@ module.exports = class User {
     this.id = uuid.v1();
     this.setName(name);
     const numberShot = 3;
-    this._shot = numberShot;
+    this.shot = numberShot;
     this.location = null;
-
-
-
-
+    this.takedAttributes = new Array();
+    this.cancele1tAttributes = new Array();
+    this.getMessageBoolean = true;
   }
 
   getId(){
@@ -27,8 +26,27 @@ module.exports = class User {
   setLocation(location) {
     this.location = location;
   }
-  lowerShot(){
-    this.shot -= 1;
+  getattributes(){
+    return this.takedAttributes;
+  }
+  addAttribute(attributeId) {
+    this.takedAttributes.push(parseInt(attributeId));
+  }
+  getCancele1ttributes(){
+    return this.takedAttributes;
+  }
+  addCancele1tAttribute(attributeId) {
+    this.cancele1tAttributes.push(parseInt(attributeId));
+  }
+
+
+  loseShot(){
+    if(this.shot > 0){
+      this.shot -= 1;
+    }else{
+      throw new Error("Kogels op");
+    }
+
   }
   reloadShot(){
     this.shot = numberShot;

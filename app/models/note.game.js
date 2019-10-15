@@ -4,6 +4,7 @@ module.exports = class Game {
     this.id = uuid.v1();
     this.setName(name);
     this.users = new Array();
+    this.messages = new Array();
     this.placeId = null;
     this.placeName = null;
     this.active = false;
@@ -33,6 +34,75 @@ module.exports = class Game {
     return false;
   }
 
+  test(userId,messa){
+    console.log("userid",userId);
+    console.log("messa",messa);
+    /*messa.getReadUsers().forEach(function(id){
+      console.log("id",id,userId);
+      if(userId == id){
+        console.log("true",true);
+        return true;
+      }
+
+    });
+    return false;
+    */
+  }
+
+
+
+  getUserMessages(userId){
+    var mes = new Array();
+    this.getMessages().forEach(function(message){
+      message.readUsers.forEach(function(id,index){
+        console.log("index",index);
+        if(userId == id){
+          mes.push(message);
+          // gelezen
+          message.readUsers.splice(index, 1);
+        }
+      });
+    });
+
+
+    return mes;
+  }
+
+  getUserMessage(userId){
+    var value = true;
+    var mes;
+    //var mes = new Array();
+    this.getMessages().forEach(function(message){
+      message.readUsers.forEach(function(id,index){
+        if(userId == id){
+          console.log("index",index);
+          // gelezen
+          //
+          if(value){
+            console.log("ok");
+            value=false;
+
+            message.readUsers.splice(index, 1);
+            mes = message;
+          }
+
+        }
+      });
+    });
+
+
+    return mes;
+  }
+
+
+
+  getMessages(){
+    return this.messages;
+  }
+
+  addMessages(messages){
+    this.messages.push(messages);
+  }
 
 
   getUsers(){

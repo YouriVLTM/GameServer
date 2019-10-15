@@ -185,6 +185,36 @@ module.exports = (app,io) => {
     }
   });
 
+  socket.on( 'game.getMessages', function( data ) {
+   try {
+     //console.log("messs", data);
+     receive = game.getMessages(data);
+     socket.emit('game.getMessages', { data: receive });
+   } catch (e) {
+     socket.emit('games.error', { data: e.message });
+   }
+ });
+
+
+ socket.on( 'game.getMessage', function( data ) {
+  try {
+    //console.log("messs", data);
+    receive = game.getMessage(data);
+    socket.emit('game.getMessage', { data: receive });
+  } catch (e) {
+    socket.emit('games.error', { data: e.message });
+  }
+});
+
+
+ socket.on( 'game.setMessage', function( data ) {
+  try {
+    receive = game.setMessage(data);
+    socket.emit('game.setMessage', { data: receive });
+  } catch (e) {
+    socket.emit('games.error', { data: e.message });
+  }
+});
 
    /********/
    /*Maps**/
@@ -214,8 +244,15 @@ module.exports = (app,io) => {
   /********/
   /*Users**/
   /********/
-  socket.on( 'user.setLocation', function( data ) {
+  socket.on( 'user.loseShot', function( data ) {
+   try {
+     users.loseShot(data);
+   } catch (e) {
+     socket.emit('user.error', { data: e.message });
+   }
+  });
 
+  socket.on( 'user.setLocation', function( data ) {
    try {
      users.setLocation(data);
    } catch (e) {
@@ -223,8 +260,21 @@ module.exports = (app,io) => {
    }
   });
 
+  socket.on( 'user.addAttribute', function( data ) {
+   try {
+     users.addAttribute(data);
+   } catch (e) {
+     socket.emit('user.error', { data: e.message });
+   }
+  });
 
-
+  socket.on( 'user.canceledAttribute', function( data ) {
+   try {
+     users.canceledAttribute(data);
+   } catch (e) {
+     socket.emit('user.error', { data: e.message });
+   }
+  });
 
 
 
