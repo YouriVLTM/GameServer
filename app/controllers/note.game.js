@@ -14,6 +14,14 @@ function setName(data) {
 };
 exports.setName = setName;
 
+function getAttributePrice(data) {
+
+  var game = Gamess.getGame(data);
+  return game.getAttributePrice(data.attributeId);
+
+};
+exports.getAttributePrice = getAttributePrice;
+
 
 function getCountAgent(data) {
 

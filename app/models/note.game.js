@@ -176,10 +176,37 @@ module.exports = class Game {
     return this.attribute;
   }
 
+  getAttributePrice(placeId){
+    console.log("place id", placeId);
+    if(this.getAattribute(placeId).type == "raided"){
+      return this.getAattribute(placeId).raided.price;
+    }
+    return 0;
+
+  }
+
+  getAattribute(id){
+    var att = null;
+      this.attribute.forEach(function(attr) {
+        if(attr.id == id){
+          att= attr;
+        }
+      });
+      
+      if(att !=null){
+        return att;
+      }
+
+    throw new Error('Attribute not foundss', this.getattribute());
+  }
 
 
   getAttribute(placeId){
     return require(this.getMapsJsonFile()[placeId].url);
+  }
+
+  getRaided(){
+
   }
 
   getMapsJsonFile(){

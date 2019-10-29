@@ -2,6 +2,7 @@
 [
   {
     "id":0,
+    "type":"item",
     "taked":false,
     "position": {"lat": 51.147316, "lng": 5.002830},
     "title": "Ardis G Egan Intermediate School",
@@ -15,6 +16,7 @@
   },
   {
     "id":1,
+    "type":"item",
     "taked":false,
     "position": {"lat": 51.148167, "lng": 5.005472},
     "title": "Portola School",
@@ -28,6 +30,7 @@
   },
   {
     "id":2,
+    "type":"item",
     "taked":false,
     "position": {"lat": 51.148674, "lng": 4.998877},
     "title": "Isaac Newton Graham Middle School",
@@ -41,11 +44,85 @@
   },
   {
     "id":3,
+    "type":"item",
     "taked":false,
     "position": {"lat": 51.150949, "lng": 5.003769},
     "title": "Isaac Newton Graham Middle School",
     "icon":{
       "url":"img/attribute/sdcard.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
+    }
+  },
+  {
+    "id":4,
+    "type":"raided",
+    "taked":false,
+    "raided":{
+      "item":[0,1],
+      "price":100
+    },
+    "position": {"lat": 51.149453, "lng": 5.014373},
+    "title": "<h2>Overval 1</h2>",
+    "snippet" : "<img src='img/attribute/cut.png' class='iconAttribute'/> + <img src='img/attribute/gun.png' class='iconAttribute' /> = 100 euro'",
+    "icon":{
+      "url":"img/raided/one.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
+    }
+  },
+  {
+    "id":5,
+    "type":"raided",
+    "taked":false,
+    "raided":{
+      "item":[1],
+      "price":300
+    },
+    "position": {"lat": 51.143810, "lng": 5.001604},
+    "title": "Overval 2",
+    "icon":{
+      "url":"img/raided/two.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
+    }
+  },
+  {
+    "id":6,
+    "type":"raided",
+    "taked":false,
+    "raided":{
+      "item":[2,3],
+      "price":500
+    },
+    "position": {"lat": 51.150448, "lng": 4.996006},
+    "title": "Overval3",
+    "icon":{
+      "url":"img/raided/three.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
+    }
+  },
+  {
+    "id":7,
+    "type":"raided",
+    "taked":false,
+    "raided":{
+      "item":[3],
+      "price":50
+    },
+    "position": {"lat": 51.150011, "lng": 5.002911},
+    "title": "Overval 4",
+    "icon":{
+      "url":"img/raided/four.png",
       "size": {
             "width": 40,
             "height": 40

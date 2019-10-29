@@ -270,7 +270,8 @@ module.exports = (app,io) => {
 
   socket.on( 'user.addAttribute', function( data ) {
    try {
-     users.addAttribute(data);
+     var price = users.addAttribute(data);
+     socket.emit('user.getPrice', { data: price });
    } catch (e) {
      socket.emit('user.error', { data: e.message });
    }

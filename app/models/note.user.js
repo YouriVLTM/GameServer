@@ -9,6 +9,7 @@ module.exports = class User {
     this.cancele1tAttributes = new Array();
     this.getMessageBoolean = true;
     this.death = false;
+    this.price = 0;
   }
 
   getId(){
@@ -21,6 +22,14 @@ module.exports = class User {
   setName(name) {
     this.name = name;
   }
+
+  getPrice(){
+    return this.price;
+  }
+  addPrice(price) {
+    this.price += price;
+  }
+
   getLocation(){
     return this.location;
   }

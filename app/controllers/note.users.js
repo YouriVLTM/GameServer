@@ -38,9 +38,15 @@ exports.canceledAttribute = canceledAttribute;
 function addAttribute(data) {
 var user = getUser(data);
 user.addAttribute(data.attributeId);
+console.log(data);
+// change price
+var price = Game.getAttributePrice(data);
+user.addPrice(price);
 
 //Message
 Game.addMessage(data);
+
+return user.getPrice();
 
 };
 exports.addAttribute = addAttribute;
@@ -53,6 +59,7 @@ if(user.getShot()> 0){
   data.detectUsers.forEach(function(detectuser){
     us = getUser({'gameId':data.gameId,'userId':detectuser.id});
     console.log(us);
+    user.loseShot();
     us.hitShot();
   });
 
