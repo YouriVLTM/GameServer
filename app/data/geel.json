@@ -117,7 +117,7 @@
     "taked":false,
     "raided":{
       "item":[3],
-      "price":50
+      "price":20000
     },
     "position": {"lat": 51.150011, "lng": 5.002911},
     "title": "Overval 4",

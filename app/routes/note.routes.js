@@ -1,3 +1,6 @@
+/**
+ * Routes
+ */
 module.exports = (app,io) => {
     const gamess = require('../controllers/note.games.js');
     const game = require('../controllers/note.game.js');
@@ -273,6 +276,7 @@ module.exports = (app,io) => {
      var price = users.addAttribute(data);
      socket.emit('user.getPrice', { data: price });
    } catch (e) {
+     console.log(e);
      socket.emit('user.error', { data: e.message });
    }
   });

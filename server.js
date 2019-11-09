@@ -79,6 +79,10 @@ app.get('/socket.io.js', (req, res) => {
   res.json({"message": "Welwxome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
 });
 
+app.get('/readme', (req, res) => {
+  res.header('README.md')
+});
+
 
 
 require('./app/routes/note.routes.js')(app,io);

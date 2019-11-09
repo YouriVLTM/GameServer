@@ -42,6 +42,12 @@ console.log(data);
 // change price
 var price = Game.getAttributePrice(data);
 user.addPrice(price);
+// check if price is more than
+if(user.getPrice() > 1000){
+  // Game over
+  throw new Error('Gameover', user.getPrice() + user.getName() + " heeft gewonnen!");
+
+}
 
 //Message
 Game.addMessage(data);
