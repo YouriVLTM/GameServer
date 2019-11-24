@@ -2,34 +2,131 @@
 [
   {
     "id":0,
-    "position": {"lat": 51.132499, "lng": 5.074668},
-    "title": "Ardis G Egan Intermediate School",
+    "type":"item",
+    "taked":false,
+    "position": {"lat": 51.137481, "lng": 5.071305},
+    "title": "Schaar",
     "icon":{
-      "url":"img/cut.png"
+      "url":"img/attribute/cut.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
     }
   },
   {
     "id":1,
-    "position": {"lat": 51.133105, "lng": 5.077554},
-    "title": "Portola School",
+    "type":"item",
+    "taked":false,
+    "position": {"lat": 51.138612, "lng": 5.070372},
+    "title": "Pistool",
     "icon":{
-      "url":"img/cut.png"
+      "url":"img/attribute/gun.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
     }
   },
   {
     "id":2,
-    "position": {"lat": 51.132795, "lng": 5.079249},
-    "title": "Isaac Newton Graham Middle School",
+    "type":"item",
+    "taked":false,
+    "position": {"lat": 51.137091, "lng": 5.073259},
+    "title": "Mes",
     "icon":{
-      "url":"img/cut.png"
+      "url":"img/attribute/knife.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
     }
   },
   {
     "id":3,
-    "position": {"lat": 51.131428, "lng": 5.079807},
-    "title": "Isaac Newton Graham Middle School",
+    "type":"item",
+    "taked":false,
+    "position": {"lat": 51.137558, "lng": 5.068795},
+    "title": "Sdcard",
     "icon":{
-      "url":"img/cut.png"
+      "url":"img/attribute/sdcard.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
+    }
+  },
+  {
+    "id":4,
+    "type":"raided",
+    "taked":false,
+    "raided":{
+      "item":[0,1],
+      "price":100
+    },
+    "position": {"lat": 51.136645, "lng": 5.069104},
+    "title": "<h2>Overval 1</h2>",
+    "snippet" : "<img src='img/attribute/cut.png' class='iconAttribute'/> + <img src='img/attribute/gun.png' class='iconAttribute' /> = 100 euro'",
+    "icon":{
+      "url":"img/raided/one.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
+    }
+  },
+  {
+    "id":5,
+    "type":"raided",
+    "taked":false,
+    "raided":{
+      "item":[1],
+      "price":300
+    },
+    "position": {"lat": 51.138530, "lng": 5.068461},
+    "title": "Overval 2",
+    "icon":{
+      "url":"img/raided/two.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
+    }
+  },
+  {
+    "id":6,
+    "type":"raided",
+    "taked":false,
+    "raided":{
+      "item":[2,3],
+      "price":500
+    },
+    "position": {"lat": 51.135859, "lng": 5.071757},
+    "title": "Overval3",
+    "icon":{
+      "url":"img/raided/three.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
+    }
+  },
+  {
+    "id":7,
+    "type":"raided",
+    "taked":false,
+    "raided":{
+      "item":[3],
+      "price":20000
+    },
+    "position": {"lat": 51.135960, "lng": 5.068706},
+    "title": "Overval 4",
+    "icon":{
+      "url":"img/raided/four.png",
+      "size": {
+            "width": 40,
+            "height": 40
+         }
     }
   }
 ]

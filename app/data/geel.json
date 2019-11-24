@@ -5,7 +5,7 @@
     "type":"item",
     "taked":false,
     "position": {"lat": 51.147316, "lng": 5.002830},
-    "title": "Ardis G Egan Intermediate School",
+    "title": "Schaar",
     "icon":{
       "url":"img/attribute/cut.png",
       "size": {
@@ -19,7 +19,7 @@
     "type":"item",
     "taked":false,
     "position": {"lat": 51.148167, "lng": 5.005472},
-    "title": "Portola School",
+    "title": "Pistool",
     "icon":{
       "url":"img/attribute/gun.png",
       "size": {
@@ -33,7 +33,7 @@
     "type":"item",
     "taked":false,
     "position": {"lat": 51.148674, "lng": 4.998877},
-    "title": "Isaac Newton Graham Middle School",
+    "title": "Mes",
     "icon":{
       "url":"img/attribute/knife.png",
       "size": {
@@ -47,7 +47,7 @@
     "type":"item",
     "taked":false,
     "position": {"lat": 51.150949, "lng": 5.003769},
-    "title": "Isaac Newton Graham Middle School",
+    "title": "Sdcard",
     "icon":{
       "url":"img/attribute/sdcard.png",
       "size": {

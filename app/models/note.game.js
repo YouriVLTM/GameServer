@@ -176,6 +176,47 @@ module.exports = class Game {
     return this.attribute;
   }
 
+  addAttribute(user){
+    if(user._function == "Agent"){
+      console.log("Game in basecamp prisoner");
+      var att = {
+        "id":"base",
+        "type":"basecamp",
+        "function" : "Agent",
+        "taked":false,
+        "position": user.location,
+        "title": "Basecamp of " + user._function,
+        "icon":{
+          "url":"img/attribute/politie.png",
+          "size": {
+                "width": 40,
+                "height": 40
+             }
+        }
+      }
+    }else if(user._function == "Prisoner"){
+      console.log("Game in basecamp prisoner");
+      var att = {
+        "id":"base",
+        "type":"basecamp",
+        "function" : "Prisoner",
+        "taked":false,
+        "position": user.location,
+        "title": "Basecamp of " + user._function,
+        "icon":{
+          "url":"img/attribute/dief.png",
+          "size": {
+                "width": 40,
+                "height": 40
+             }
+        }
+      }
+    }
+
+
+    this.attribute.push(att);
+  }
+
   getAttributePrice(placeId){
     console.log("place id", placeId);
     if(this.getAattribute(placeId).type == "raided"){
@@ -192,7 +233,7 @@ module.exports = class Game {
           att= attr;
         }
       });
-      
+
       if(att !=null){
         return att;
       }

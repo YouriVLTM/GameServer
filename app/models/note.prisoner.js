@@ -8,5 +8,7 @@ module.exports = class Prisoner extends User {
   }
 
 
-
+  getFunction(){
+    return this._function;
+  }
 }

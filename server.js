@@ -98,24 +98,6 @@ const Agent = require('./app/models/note.agent.js');
 const Prisoner = require('./app/models/note.prisoner.js');
 
 
-var newGame = new Game("spel1");
-var location = new Location();
-var agent = new Agent("youri");
-/*agent.setLocation(location);
-newGame.addUser(agent);
-
-var prison = new Prisoner("LOL");
-agent.setLocation(location);
-newGame.addUser(prison);
-*/
-var agent2 = new Agent("THe BEST");
-agent.setLocation(location);
-//newGame.addUser(agent2);
-
-games.push(newGame);
-// add Users
-
-console.log(games);
 
 //httpserver.listen(8080);
 server.listen(3000);

@@ -2,14 +2,18 @@ module.exports = class User {
   constructor(name){
     this.id = uuid.v1();
     this.setName(name);
-    const numberShot = 3;
-    this.shot = numberShot;
+    this.numberShot = 20;
+    this.shot = this.numberShot;
     this.location = null;
     this.takedAttributes = new Array();
     this.cancele1tAttributes = new Array();
     this.getMessageBoolean = true;
     this.death = false;
     this.price = 0;
+    this.leave = false;
+
+    /* test */
+    //this.addAttribute(3);
   }
 
   getId(){
@@ -21,6 +25,17 @@ module.exports = class User {
   }
   setName(name) {
     this.name = name;
+  }
+
+  leave() {
+    this.leave = true;
+  }
+
+  getLeave(){
+    return this.leave;
+  }
+  setLeave(bool) {
+    this.leave = bool;
   }
 
   getPrice(){
@@ -73,7 +88,14 @@ getShot(){
   }
 
   reloadShot(){
-    this.shot = numberShot;
+    if(this.shot == this.numberShot){
+      return false;
+    }else{
+      this.setDeath(false);
+      this.shot = this.numberShot;
+      return true;
+    }
+
   }
 
 

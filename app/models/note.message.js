@@ -7,6 +7,8 @@ module.exports = class Message {
     this.readFunctionUsers = false;
     this.readFunctionUsers = new Array();
     this.readUsers = new Array();
+    this.buttonUrl = null;
+    this.buttonName = "Sluiten";
 
   }
 
@@ -45,6 +47,20 @@ module.exports = class Message {
   }
   setTitle(title){
     this.title= title;
+  }
+
+  getButtonUrl(){
+    return this.buttonUrl;
+  }
+  setButtonUrl(url){
+    this.buttonUrl= url;
+  }
+
+  getButtonName(){
+    return this.buttonName;
+  }
+  setButtonName(name){
+    this.buttonName= name;
   }
 
   getMessage(){

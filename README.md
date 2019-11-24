@@ -1,6 +1,6 @@
 # GameServer
 
-#API
+#API (socket)
 Games
 - createNewGame
 - getAll

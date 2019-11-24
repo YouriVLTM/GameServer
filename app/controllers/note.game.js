@@ -14,6 +14,22 @@ function setName(data) {
 };
 exports.setName = setName;
 
+function setBasecamp(data) {
+  var game = Gamess.getGame(data);
+  if(data.user._function == "Prisoner"){
+    console.log("add basecamp");
+    game.addAttribute(data.user);
+  }else if(data.user._function == "Agent"){
+    game.addAttribute(data.user);
+  }else{
+    throw new Error("Geen basecamp");
+  }
+
+};
+exports.setBasecamp = setBasecamp;
+
+
+
 function getAttributePrice(data) {
 
   var game = Gamess.getGame(data);
@@ -95,9 +111,41 @@ function getAllUserLocation(data) {
 };
 exports.getAllUserLocation = getAllUserLocation;
 
+
+function getAllAgentLocation(data) {
+  var game = Gamess.getGame(data);
+  var userAgent = new Array();
+for(user of game.getUsers()){
+  if(user._function == "Agent"){
+    userAgent.push(user)
+  }
+}
+
+  return userAgent;
+
+};
+exports.getAllAgentLocation = getAllAgentLocation;
+
+function getAllPrisonerLocation(data) {
+  var game = Gamess.getGame(data);
+  var userPrisoner = new Array();
+for(user of game.getUsers()){
+  if(user._function == "Prisoner"){
+    userPrisoner.push(user)
+  }
+}
+
+  return userPrisoner;
+
+};
+exports.getAllPrisonerLocation = getAllPrisonerLocation;
+
+
 function addMessage(data) {
   var game = Gamess.getGame(data);
   var message = new Message(data.message.title,data.message.message);
+  message.setButtonName(data.message.buttonName);
+  message.setButtonUrl(data.message.buttonUrl);
 
 console.log(message);
 //Elke elemnent

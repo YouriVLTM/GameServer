@@ -178,6 +178,28 @@ module.exports = (app,io) => {
      }
    });
 
+
+
+socket.on( 'game.getAllPrisonerLocation', function( data ) {
+
+ try {
+   receive = game.getAllPrisonerLocation(data);
+   socket.emit('game.getAllPrisonerLocation', { data: receive });
+ } catch (e) {
+   socket.emit('games.error', { data: e.message });
+ }
+});
+
+   socket.on( 'game.getAllAgentLocation', function( data ) {
+
+    try {
+      receive = game.getAllAgentLocation(data);
+      socket.emit('game.getAllAgentLocation', { data: receive });
+    } catch (e) {
+      socket.emit('games.error', { data: e.message });
+    }
+   });
+
    socket.on( 'game.getAllUserLocation', function( data ) {
 
     try {
@@ -219,6 +241,17 @@ module.exports = (app,io) => {
   }
 });
 
+
+socket.on( 'game.start', function( data ) {
+ try {
+   receive = game.setBasecamp(data);
+   socket.emit('game.setMessage', { data: receive });
+ } catch (e) {
+   socket.emit('games.error', { data: e.message });
+ }
+});
+
+
    /********/
    /*Maps**/
    /********/
@@ -247,6 +280,14 @@ module.exports = (app,io) => {
   /********/
   /*Users**/
   /********/
+  socket.on( 'user.shot', function( data ) {
+   try {
+     receive = game.getAllUserLocation(data);
+     socket.emit('user.shot', { data: receive });
+   } catch (e) {
+     socket.emit('user.error', { data: e.message });
+   }
+  });
   socket.on( 'user.loseShot', function( data ) {
    try {
      users.loseShot(data);
@@ -289,8 +330,26 @@ module.exports = (app,io) => {
    }
   });
 
+  socket.on( 'user.leave', function( data ) {
+   try {
+     console.log("leave");
+     users.leave(data);
+   } catch (e) {
+     socket.emit('user.error', { data: e.message });
+   }
+  });
 
 
+  socket.on( 'user.reloadShot', function( data ) {
+   try {
+     var reloaded = users.reloadShot(data);
+     if(reloaded != null){
+       socket.emit('user.reloadShot', { data: reloaded });
+     }
+   } catch (e) {
+     socket.emit('user.error', { data: e.message });
+   }
+  });
 
 
 

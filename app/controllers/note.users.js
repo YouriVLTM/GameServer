@@ -45,8 +45,13 @@ user.addPrice(price);
 // check if price is more than
 if(user.getPrice() > 1000){
   // Game over
-  throw new Error('Gameover', user.getPrice() + user.getName() + " heeft gewonnen!");
-
+  //throw new Error('Gameover', user.getPrice() + user.getName() + " heeft gewonnen!");
+  //Message
+  data.message.title = "Game Over";
+  data.message.message = "<h2>Game Over</h2><p>" + user.getName() + " heeft gewonnen met " + user.getPrice() + " euro";
+  data.message.readUsers = ['Agent','Prisoner','Admin'];
+  data.message.buttonName = "Game Over";
+  data.message.buttonUrl = "index.html";
 }
 
 //Message
@@ -61,13 +66,41 @@ function hitShot(data) {
 var user = getUser(data);
 
 if(user.getShot()> 0){
+  if(!user.getDeath()){
 
-  data.detectUsers.forEach(function(detectuser){
-    us = getUser({'gameId':data.gameId,'userId':detectuser.id});
-    console.log(us);
-    user.loseShot();
-    us.hitShot();
-  });
+    data.detectUsers.forEach(function(detectuser){
+      console.log("Detectuser");
+      us = getUser({'gameId':data.gameId,'userId':detectuser.id});
+      console.log(us);
+      user.loseShot();
+      us.hitShot();
+
+
+      console.log(data);
+      if(us.getFunction() == "Agent"){
+        data.message.title = "Shot";
+        data.message.message = "<h2>Shot</h2><p>" + user.getName() + " heeft de agent " + us.getName() + " neergeschoten.</p><p>";
+        data.message.readUsers = ['Agent','Prisoner','Admin'];
+        //data.message.buttonName = "close";
+        //data.message.buttonUrl = "#";
+        Game.addMessage(data);
+      }
+      // game over
+      if(us.getFunction() == "Prisoner"){
+        data.message.title = "Game Over";
+        data.message.message = "<h2>Game Over</h2><p>" + user.getName() + " heeft de prisoner " + us.getName() + " neergeschoten.</p><p>";
+        data.message.readUsers = ['Agent','Prisoner','Admin'];
+        data.message.buttonName = "Game Over";
+        data.message.buttonUrl = "index.html";
+        Game.addMessage(data);
+      }
+
+
+    });
+
+  }else{
+    throw new Error("Je bent dood");
+  }
 
 }else{
   throw new Error("Target view: Kogels op");
@@ -79,9 +112,35 @@ exports.hitShot = hitShot;
 
 
 function loseShot(data) {
-var user = getUser(data);
-user.loseShot();
+  var user = getUser(data);
+if(!user.getDeath()){
+    user.loseShot();
+}else{
+  throw new Error("Je bent dood");
+
+}
 
 
 };
 exports.loseShot = loseShot;
+
+function reloadShot(data) {
+  var user = getUser(data);
+  if(user.reloadShot()){
+    return user.getShot();
+  }
+  return null;
+};
+exports.reloadShot = reloadShot;
+
+
+
+function leave(data) {
+
+var user = getUser(data);
+console.log(user);
+user.setLeave(true);
+
+
+};
+exports.leave = leave;

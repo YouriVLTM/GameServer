@@ -7,6 +7,10 @@ module.exports = class Agent extends User {
     this.icon = "agent.png"
   }
 
+  getFunction(){
+    return this._function;
+  }
+
 
 
 }
