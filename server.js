@@ -12,15 +12,16 @@ const fs = require('fs');
 
 
 
-var server = https.createServer({
+/*var server = https.createServer({
     key: fs.readFileSync('./key.pem'),
     cert: fs.readFileSync('./cert.pem'),
     passphrase: 'Vriend28'
 }, app)
+*/
 
 //var httpserver = http.createServer(httpapp);
-var io = require('socket.io').listen(server);
-//var io = require('socket.io').listen(httpserver);
+//var io = require('socket.io').listen(server);
+var io = require('socket.io').listen(httpserver);
 
 /*
 console.log("connection");
@@ -97,7 +98,7 @@ const Location = require('./app/models/note.location.js');
 const Agent = require('./app/models/note.agent.js');
 const Prisoner = require('./app/models/note.prisoner.js');
 
-
+const PORT = process.env.PORT || 5000
 
 //httpserver.listen(8080);
-server.listen(3000);
+server.listen(PORT, () => console.log(`Listening on ${ PORT }`))
