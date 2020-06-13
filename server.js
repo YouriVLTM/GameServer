@@ -90,13 +90,13 @@ require('./app/routes/note.routes.js')(app,io);
 
 
 // Spel starten
-global.games = new Array();
+//global.games = new Array();
 
 //test spel
-const Game = require('./app/models/note.game.js');
-const Location = require('./app/models/note.location.js');
-const Agent = require('./app/models/note.agent.js');
-const Prisoner = require('./app/models/note.prisoner.js');
+//const Game = require('./app/models/note.game.js');
+//const Location = require('./app/models/note.location.js');
+//const Agent = require('./app/models/note.agent.js');
+//const Prisoner = require('./app/models/note.prisoner.js');
 
 const PORT = process.env.PORT || 5000
 
