@@ -21,7 +21,7 @@ const fs = require('fs');
 
 //var httpserver = http.createServer(httpapp);
 //var io = require('socket.io').listen(server);
-var io = require('socket.io').listen(httpserver);
+//var io = require('socket.io').listen(httpserver);
 
 /*
 console.log("connection");
