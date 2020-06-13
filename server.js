@@ -86,7 +86,7 @@ app.get('/readme', (req, res) => {
 
 
 
-require('./app/routes/note.routes.js')(app,io);
+//require('./app/routes/note.routes.js')(app,io);
 
 
 // Spel starten
